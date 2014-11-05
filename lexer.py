@@ -10,7 +10,7 @@ t_MINUS  = r'-'
 t_TIMES  = r'\*'
 t_DIVIDE = r'/'
 t_EQUALS = r'='
-t_NAME   = r'[a-zA-Z_][a-zA-Z0-9_]'
+t_NAME   = r'[a-zA-Z_][a-zA-Z0-9_]*'
 
 def t_NUMBER(t):
     r'\d+'
@@ -26,3 +26,11 @@ def t_error(t):
     t.lexer.skip(1)
 
 lex.lex()
+
+'''
+lex.input("3 4+")
+while True:
+    tok = lex.token()
+    if not tok: break
+    print(tok)
+'''
