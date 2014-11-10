@@ -27,10 +27,12 @@ def t_error(t):
 
 lex.lex()
 
-'''
-lex.input("3 4+")
-while True:
-    tok = lex.token()
-    if not tok: break
-    print(tok)
-'''
+def test(expr):
+    lex.input(expr)
+
+    list_tok = []
+    while True:
+        tok = lex.token()
+        if not tok: break
+        list_tok.append(tok)
+    return list_tok

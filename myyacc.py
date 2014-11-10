@@ -55,10 +55,15 @@ def p_error(p):
 
 yacc.yacc()
 
-while True:
-    try:
-        s = input('calc > ')
-    except EOFError:
-        break
-    if not s: continue
-    yacc.parse(s)
+def input_expr(expressao=None):
+    while True:
+        try:
+            if expressao == None: s = input('calc > ')
+            else: s = input(expressao)
+        except EOFError:
+            break
+        if not s: continue
+        if expressao == None: yacc.parse(s)
+        else: return yacc.parse(s)
+
+input_expr()
