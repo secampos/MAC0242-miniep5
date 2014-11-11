@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import ply.yacc as yacc
-import lexer
-tokens = lexer.tokens
+import mylexer
+tokens = mylexer.tokens
 
 precedence = (
     ('left', 'PLUS', 'MINUS'),
@@ -55,15 +55,10 @@ def p_error(p):
 
 yacc.yacc()
 
-def input_expr(expressao=None):
-    while True:
-        try:
-            if expressao == None: s = input('calc > ')
-            else: s = input(expressao)
-        except EOFError:
-            break
-        if not s: continue
-        if expressao == None: yacc.parse(s)
-        else: return yacc.parse(s)
-
-input_expr()
+while True:
+    try:
+        s = input('calc > ')
+    except EOFError:
+        break
+    if not s: continue
+    yacc.parse(s)
